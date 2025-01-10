@@ -47,7 +47,7 @@ function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div className="app">
+    <div className="login-page">
       
       <h1>Login Form</h1>
       <form onSubmit={handleSubmit} className="login-form">
