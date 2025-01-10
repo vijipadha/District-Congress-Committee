@@ -61,6 +61,18 @@ function DccPage() {
             required
           />
         </div>
+        {/* Name of the Person */}
+        <div className='block-form'>
+          <label htmlFor="name">Name of the Person:</label>
+          <input
+            type="text"
+            id="namedcc"
+            name="namedcc"
+            value={formData.namedcc}
+            onChange={handleChange}
+            required
+          />
+        </div>
         
 
         {/* Designation */}
@@ -76,6 +88,10 @@ function DccPage() {
             <option value="">Select Designation</option>
             <option value="President">President</option>
             <option value="Vice President">Vice President</option>
+            <option value="Treasurer">Treasurer</option>
+            <option value="General Secretary">General Secretary</option>
+            <option value="Secretary">Secretary</option>
+            <option value="Executive Member">Executive Member</option>
           </select>
         </div>
 
