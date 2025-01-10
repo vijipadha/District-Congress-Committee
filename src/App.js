@@ -1,80 +1,41 @@
-import logo from './logo.svg';
-import React, { useState } from "react";
-import './App.css';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import HomePage from './HomePage';
+import SideNav from './SideNav';
+import DccPage from './DccPage';
+import BlockPage from './BlockPage';
+import MunicipalityPage from './MunicipalityPage';
+import './App.css';  // Your app's styles
 
 function App() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { email, password } = formData;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // State to track login status
 
-    if (!email || !password) {
-      setError("Please fill in all fields.");
-      setSuccess("");
-      return;
-    }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
-      setSuccess("");
-      return;
-    }
-
-    // Placeholder for actual authentication logic
-    setError("");
-    setSuccess("Login successful!");
-    console.log("Logged in with:", formData);
+  // Handle login success
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
   };
 
   return (
-    <div className="app">
-    <h1>Login Form</h1>
-    <form onSubmit={handleSubmit} className="login-form">
-      {error && <p className="error">{error}</p>}
-      {success && <p className="success">{success}</p>}
-
-      <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-
-      <button type="submit" className="btn">
-        Login
-      </button>
-    </form>
-  </div>
-
+    <div className="App">
+      {!isLoggedIn ? (
+        <Routes>
+          <Route path="/" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+        </Routes>
+      ) : (
+        <div className="dashboard">
+          <SideNav />  {/* Display SideNav only after login */}
+          <div className="content">
+            <Routes>
+              
+              <Route path="/dcc" element={<DccPage />} />
+              <Route path="/block" element={<BlockPage />} />
+              <Route path="/municipality" element={<MunicipalityPage />} />
+            </Routes>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 

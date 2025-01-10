@@ -1,0 +1,96 @@
+/* General body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Login form container */
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  box-sizing: border-box;
+}
+
+/* Form heading */
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Common styling for input fields */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;  /* Ensures inputs take full width */
+  padding: 12px; /* Increased padding for better spacing */
+  margin: 10px 0; /* Consistent margin on top and bottom */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* Prevents overflow */
+}
+
+/* Button styling */
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px; /* Slight margin from inputs */
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens with width 768px or less (Tablets and smaller devices) */
+@media screen and (max-width: 768px) {
+  .login-form {
+    width: 80%; /* Form width is reduced to 80% of the screen */
+    padding: 15px; /* Reduced padding for smaller screens */
+  }
+
+  .login-form h2 {
+    font-size: 20px; /* Adjust the heading font size */
+  }
+
+  .login-form input[type="email"],
+  .login-form input[type="password"],
+  .login-form button {
+    padding: 10px; /* Adjust padding for form fields */
+    font-size: 14px; /* Adjust font size */
+  }
+}
+
+/* For screens with width 480px or less (Mobile devices) */
+@media screen and (max-width: 480px) {
+  .login-form {
+    width: 90%; /* Further reduce form width to fit smaller devices */
+    padding: 10px; /* Further reduced padding */
+  }
+
+  .login-form h2 {
+    font-size: 18px; /* Reduce the font size for mobile */
+  }
+
+  .login-form input[type="email"],
+  .login-form input[type="password"],
+  .login-form button {
+    padding: 8px; /* Smaller padding on inputs and button */
+    font-size: 12px; /* Smaller font size */
+  }
+}
