@@ -1,10 +1,16 @@
 import logo from './logo.svg';
 import React, { useState , useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import { Navigate } from 'react-router-dom';
+import home from './home';
 import './App.css';
 
+
 function Login() {
+   const navigate = useNavigate();
+  
+    const handleLoginRedirect = () => {
+      navigate("/home");
+    };
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,12 +47,39 @@ function Login() {
 
   return (
     <div className="app">
-    <h1>Login Form</h1>
+    <h1>Register Form</h1>
     <form onSubmit={handleSubmit} className="login-form">
       {error && <p className="error">{error}</p>}
       {success && <p className="success">{success}</p>}
-
-      <div className="form-group">
+      <div className='row'>
+        <div className="col-md-6">
+        <div className="form-group">
+        <label htmlFor="First Name">First Name:</label>
+        <input
+          type="input"
+          id="name"
+          name="name"
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+        </div>
+        <div className="col-md-6">
+        <div className="form-group">
+        <label htmlFor="First Name">Last Name:</label>
+        <input
+          type="input"
+          id="name"
+          name="name"
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+        </div>
+        <div className='col-md-6'>
+        <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -57,8 +90,10 @@ function Login() {
           required
         />
       </div>
-
-      <div className="form-group">
+        </div>
+        <div className='col-md-6'>
+      
+        <div className="form-group">
         <label htmlFor="password">Password:</label>
         <input
           type="password"
@@ -69,8 +104,25 @@ function Login() {
           required
         />
       </div>
+        </div>
+        <div className='col-md-6'>
+     
+        </div>
+        <div className='col-md-6'>
+       
+        </div>
+        <div className='col-md-6'>
+        
+        </div>
+        <div className='col-md-6'>
+       
+        </div>
+      </div>
 
-      <button type="submit" className="btn">
+    
+
+
+      <button type="submit" onClick={handleLoginRedirect} className="btn">
         Login
       </button>
     </form>
