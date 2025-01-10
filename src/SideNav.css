@@ -9,14 +9,33 @@
   padding-top: 20px;
   z-index: 1;
   overflow-x: hidden;
+  transition: width 0.3s ease; /* Smooth transition */
   
+}
+.sidenav.collapsed {
+  width: 50px; /* Reduced width when collapsed */
+}
+.sidenav .toggle-btn {
+  background: none;
+  color: white;
+  font-size: 24px;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .sidenav h2 {
   color: white;
   text-align: center;
   margin-bottom: 20px;
+  font-size: 24px;
+  transition: opacity 0.3s ease;
   
+}
+.sidenav.collapsed h2 {
+  opacity: 0;
 }
 
 .sidenav ul {

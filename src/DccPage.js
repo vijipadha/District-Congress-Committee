@@ -12,6 +12,7 @@ const theme = createTheme({
 function DccPage() {
   const [formData, setFormData] = useState({
     name: '',
+    personName: '',
     designation: '',
     boothNo: '',
     dob: '',
@@ -59,7 +60,7 @@ function DccPage() {
             <form onSubmit={handleSubmit}>
               <div className="row g-3">
                 {/* Name of the District Congress Committee */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Name of the District Congress Committee"
                     variant="outlined"
@@ -72,7 +73,7 @@ function DccPage() {
                 </div>
 
                 {/* Name of the Person */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Name of the Person"
                     variant="outlined"
@@ -85,7 +86,7 @@ function DccPage() {
                 </div>
 
                 {/* Designation */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Select
                     label="Designation"
                     fullWidth
@@ -104,7 +105,7 @@ function DccPage() {
                 </div>
 
                 {/* Booth No */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Booth No"
                     variant="outlined"
@@ -118,7 +119,7 @@ function DccPage() {
                 </div>
 
                 {/* Date of Birth */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Date of Birth"
                     variant="outlined"
@@ -135,10 +136,10 @@ function DccPage() {
                 </div>
 
                 {/* Gender (Radio Buttons) */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Typography variant="subtitle1">Gender</Typography>
                   <div className="d-flex justify-content-start">
-                    <label className="me-3">
+                    <label className="me-2">
                       <input
                         type="radio"
                         name="gender"
@@ -146,7 +147,7 @@ function DccPage() {
                         checked={formData.gender === 'Male'}
                         onChange={handleChange}
                       />
-                      Male
+                      <span className="ms-1">Male</span>
                     </label>
                     <label>
                       <input
@@ -156,13 +157,13 @@ function DccPage() {
                         checked={formData.gender === 'Female'}
                         onChange={handleChange}
                       />
-                      Female
+                      <span className="ms-1">Female</span>
                     </label>
                   </div>
                 </div>
 
                 {/* Caste (Dropdown) */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Select
                     label="Caste"
                     fullWidth
@@ -180,7 +181,7 @@ function DccPage() {
                 </div>
 
                 {/* Mobile No */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Mobile No"
                     variant="outlined"
@@ -196,7 +197,7 @@ function DccPage() {
                 </div>
 
                 {/* Email ID */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Email ID"
                     variant="outlined"
@@ -210,7 +211,7 @@ function DccPage() {
                 </div>
 
                 {/* Date of Application */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Date of Application"
                     variant="outlined"
@@ -221,13 +222,13 @@ function DccPage() {
                     onChange={handleChange}
                     required
                     InputLabelProps={{
-                      shrink: true, // Ensures the label stays above the input field
+                      shrink: true,
                     }}
                   />
                 </div>
 
                 {/* Aadhar ID */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Aadhar ID"
                     variant="outlined"
@@ -243,7 +244,7 @@ function DccPage() {
                 </div>
 
                 {/* Voter ID */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
                     label="Voter ID"
                     variant="outlined"
@@ -256,7 +257,7 @@ function DccPage() {
                 </div>
 
                 {/* Photo Upload */}
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Typography variant="subtitle1">Upload Photo</Typography>
                   <input
                     type="file"

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SideNav.css';  // You can create a separate CSS file for styles
+import './SideNav.css';  // Assuming you have separate styles in SideNav.css
 
 function SideNav() {
+  // State to track sidebar visibility
+  const [collapsed, setCollapsed] = useState(false);
+
+  // Toggle the sidebar between minimized and expanded
+  const toggleSidebar = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
-    <div className="sidenav">
-      <h2>COMMITTEES</h2>
+    <div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
+      <button className="toggle-btn" onClick={toggleSidebar}>
+        {collapsed ? '☰' : '×'}
+      </button>
+      <h2 className={`sidenav-title ${collapsed ? 'collapsed' : ''}`}>COMMITTEES</h2>
       <ul>
         <li><Link to="/dcc">DCC</Link></li>
         <li><Link to="/block">BLOCK</Link></li>
