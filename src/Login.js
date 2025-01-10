@@ -78,6 +78,32 @@ function Login() {
         />
       </div>
         </div>
+        <div className="col-md-6">
+        <div className="form-group">
+        <label htmlFor="First Name">Date of Birth</label>
+        <input
+          type="date"
+          id="name"
+          name="name"
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+        </div>
+        <div className="col-md-6">
+        <div className="form-group">
+        <label htmlFor="First Name">Mobile Number</label>
+        <input
+          type="tel"
+          id="name"
+          name="name"
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+        </div>
         <div className='col-md-6'>
         <div className="form-group">
         <label htmlFor="email">Email:</label>
@@ -94,37 +120,80 @@ function Login() {
         <div className='col-md-6'>
       
         <div className="form-group">
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Address:</label>
         <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
+          type="input"
+          id=""
+          name=""
+          value={null}
           onChange={handleInputChange}
           required
         />
       </div>
         </div>
         <div className='col-md-6'>
-     
+        <div className="form-group">
+        <label htmlFor="password">City</label>
+        <input
+          type="input"
+          id=""
+          name=""
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
         </div>
         <div className='col-md-6'>
-       
+        <div className="form-group">
+        <label htmlFor="password">State</label>
+        <input
+          type="input"
+          id=""
+          name=""
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
         </div>
         <div className='col-md-6'>
-        
+        <div className="form-group">
+        <label htmlFor="password">Country:</label>
+        <input
+          type="input"
+          id=""
+          name=""
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
         </div>
         <div className='col-md-6'>
-       
+        <div className="form-group">
+        <label htmlFor="password">Aadhar Number:</label>
+        <input
+          type="input"
+          id=""
+          name=""
+          value={null}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+        </div>
+        <div className='col-md-12'>
+          <button type="submit" onClick={handleLoginRedirect} className="btn">
+              Login
+        </button>
         </div>
       </div>
 
     
 
 
-      <button type="submit" onClick={handleLoginRedirect} className="btn">
-        Login
-      </button>
+      
     </form>
   </div>
 
