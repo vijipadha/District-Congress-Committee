@@ -16,6 +16,7 @@ import Booth from './Booth';
 import FrontalDepartment from './FrontalDepartment';
 import Mandal from './Mandal';
 import './App.css';  // Your app's styles
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);  // State to track login status

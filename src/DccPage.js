@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import './DccPage.css'; // Make sure to import the CSS
+import { Container, TextField, MenuItem, Button, FormControl, InputLabel, Select, Typography, Card, CardContent, ThemeProvider, createTheme, Box } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',  // This will make the primary color blue
+    },
+  },
+});
 
 function DccPage() {
-  // State to hold form data
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
@@ -15,10 +22,9 @@ function DccPage() {
     dateOfApplication: '',
     aadharId: '',
     voterId: '',
-    photo:null,
+    photo: null,
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -26,7 +32,7 @@ function DccPage() {
       [name]: value,
     });
   };
-  // Handle file upload
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFormData({
@@ -35,235 +41,257 @@ function DccPage() {
     });
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic, e.g., logging the form data
     console.log('Form submitted:', formData);
   };
-   // Preview image if photo is uploaded
-   const photoPreview = formData.photo ? URL.createObjectURL(formData.photo) : '';
 
+  const photoPreview = formData.photo ? URL.createObjectURL(formData.photo) : '';
 
   return (
-    <div className="dcc">
-      <h2>District Congress Committee Form</h2>
-      <form onSubmit={handleSubmit} className='dcc-page'>
-        {/* Name of the District Congress Committee */}
-        <div className='block-form'>
-          <label htmlFor="name">Name of the District Congress Committee:</label>
-          <input
-            type="text"
-            id="namedcc"
-            name="namedcc"
-            value={formData.namedcc}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Name of the Person */}
-        <div className='block-form'>
-          <label htmlFor="name">Name of the Person:</label>
-          <input
-            type="text"
-            id="namedcc"
-            name="namedcc"
-            value={formData.namedcc}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="lg" className="mt-5">
+        <Card>
+          <CardContent>
+            <Typography variant="h5" align="center" gutterBottom>
+              District Congress Committee Form
+            </Typography>
+            <form onSubmit={handleSubmit}>
+              <Box display="flex" flexWrap="wrap" gap={3}>
+                {/* Name of the District Congress Committee */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Name of the District Congress Committee"
+                    variant="outlined"
+                    fullWidth
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </Box>
 
-        {/* Designation */}
-        <div className='dcc-form'>
-          <label htmlFor="designation">Designation:</label>
-          <select
-            id="designation"
-            name="designation"
-            value={formData.designation}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Designation</option>
-            <option value="President">President</option>
-            <option value="Vice President">Vice President</option>
-            <option value="Treasurer">Treasurer</option>
-            <option value="General Secretary">General Secretary</option>
-            <option value="Secretary">Secretary</option>
-            <option value="Executive Member">Executive Member</option>
-          </select>
-        </div>
+                {/* Name of the Person */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Name of the Person"
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
+                    value={formData.personName}
+                    onChange={handleChange}
+                    required
+                  />
+                </Box>
 
-        {/* Booth No */}
-        <div className='dcc-form'>
-          <label htmlFor="boothNo">Booth No:</label>
-          <input
-            type="number"
-            id="boothNo"
-            name="boothNo"
-            value={formData.boothNo}
-            onChange={handleChange}
-            required
-          />
-        </div>
+                {/* Designation */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <FormControl fullWidth required>
+                    <InputLabel>Designation</InputLabel>
+                    <Select
+                      name="designation"
+                      value={formData.designation}
+                      onChange={handleChange}
+                      label="Designation"
+                    >
+                      <MenuItem value="President">President</MenuItem>
+                      <MenuItem value="Vice President">Vice President</MenuItem>
+                      <MenuItem value="Treasurer">Treasurer</MenuItem>
+                      <MenuItem value="General Secretary">General Secretary</MenuItem>
+                      <MenuItem value="Secretary">Secretary</MenuItem>
+                      <MenuItem value="Executive Member">Executive Member</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
 
-        {/* Date of Birth */}
-        <div className='dcc-form'>
-          <label htmlFor="dob">Date of Birth:</label>
-          <input
-            type="date"
-            id="dob"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-            required
-          />
-        </div>
+                {/* Booth No */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Booth No"
+                    variant="outlined"
+                    fullWidth
+                    name="boothNo"
+                    type="number"
+                    value={formData.boothNo}
+                    onChange={handleChange}
+                    required
+                  />
+                </Box>
 
-        {/* Gender (Radio Buttons) */}
-        <div className='dcc-form'>
-        <div className="gender-wrapper">
-          <label>Gender:</label>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="Male"
-              checked={formData.gender === 'Male'}
-              onChange={handleChange}
-            />
-            Male
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="Female"
-              checked={formData.gender === 'Female'}
-              onChange={handleChange}
-            />
-            Female
-          </label>
-          </div>
-        </div>
+                {/* Date of Birth */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Date of Birth"
+                    variant="outlined"
+                    fullWidth
+                    type="date"
+                    name="dob"
+                    value={formData.dob}
+                    onChange={handleChange}
+                    required
+                    InputLabelProps={{
+                      shrink: true,// Ensures the label stays above the input field
+                    }}
+                  />
+                </Box>
 
-        {/* Caste (Dropdown) */}
-        <div className='dcc-form'>
-          <label htmlFor="caste">Caste:</label>
-          <select
-            id="caste"
-            name="caste"
-            value={formData.caste}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Caste</option>
-            <option value="General">General</option>
-            <option value="OBC">OBC</option>
-            <option value="SC">SC</option>
-            <option value="ST">ST</option>
-            <option value="Minority">Minority</option>
-          </select>
-        </div>
+                {/* Gender (Radio Buttons) */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <Typography variant="subtitle1">Gender</Typography>
+                  <div className="d-flex justify-content-start">
+                    <label className="me-3">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                        checked={formData.gender === 'Male'}
+                        onChange={handleChange}
+                      />
+                      Male
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                        checked={formData.gender === 'Female'}
+                        onChange={handleChange}
+                      />
+                      Female
+                    </label>
+                  </div>
+                </Box>
 
-        {/* Mobile No */}
-        <div className='dcc-form'>
-          <label htmlFor="mobileNo">Mobile No:</label>
-          <input
-            type="text"
-            id="mobileNo"
-            name="mobileNo"
-            value={formData.mobileNo}
-            onChange={handleChange}
-            required
-            pattern="[0-9]{10}"  // Ensuring 10-digit input
-            maxLength="10"
-            title="Please enter a 10-digit mobile number."
-          />
-        </div>
+                {/* Caste (Dropdown) */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <FormControl fullWidth required>
+                    <InputLabel>Caste</InputLabel>
+                    <Select
+                      name="caste"
+                      value={formData.caste}
+                      onChange={handleChange}
+                      label="Caste"
+                    >
+                      <MenuItem value="General">General</MenuItem>
+                      <MenuItem value="OBC">OBC</MenuItem>
+                      <MenuItem value="SC">SC</MenuItem>
+                      <MenuItem value="ST">ST</MenuItem>
+                      <MenuItem value="Minority">Minority</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
 
-        {/* Email ID */}
-        <div className='dcc-form'>
-          <label htmlFor="email">Email ID:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+                {/* Mobile No */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Mobile No"
+                    variant="outlined"
+                    fullWidth
+                    name="mobileNo"
+                    value={formData.mobileNo}
+                    onChange={handleChange}
+                    required
+                    pattern="[0-9]{10}"
+                    maxLength="10"
+                    title="Please enter a 10-digit mobile number."
+                  />
+                </Box>
 
-        {/* Date of Application */}
-        <div className='dcc-form'>
-          <label htmlFor="dateOfApplication">Date of Application:</label>
-          <input
-            type="date"
-            id="dateOfApplication"
-            name="dateOfApplication"
-            value={formData.dateOfApplication}
-            onChange={handleChange}
-            required
-          />
-        </div>
+                {/* Email ID */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Email ID"
+                    variant="outlined"
+                    fullWidth
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </Box>
 
-        {/* Aadhar ID */}
-        <div className='dcc-form'>
-          <label htmlFor="aadharId">Aadhar ID:</label>
-          <input
-            type="text"
-            id="aadharId"
-            name="aadharId"
-            value={formData.aadharId}
-            onChange={handleChange}
-            required
-            pattern="[0-9]{12}" // Aadhar ID is a 12-digit number
-            maxLength="12"
-            title="Aadhar ID must be 12 digits."
-          />
-        </div>
+                {/* Date of Application */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Date of Application"
+                    variant="outlined"
+                    fullWidth
+                    type="date"
+                    name="dateOfApplication"
+                    value={formData.dateOfApplication}
+                    onChange={handleChange}
+                    required
+                    InputLabelProps={{
+                      shrink: true,// Ensures the label stays above the input field
+                    }}
+                  />
+                </Box>
 
-        {/* Voter ID */}
-        <div className='dcc-form'>
-          <label htmlFor="voterId">Voter ID:</label>
-          <input
-            type="text"
-            id="voterId"
-            name="voterId"
-            value={formData.voterId}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Photo Upload */}
-        <div className="photo-upload">
-          <label htmlFor="photo">Upload Photo:</label>
-          <input
-            type="file"
-            id="photo"
-            name="photo"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-          {formData.photo && (
-            <img
-              src={photoPreview}
-              alt="Preview"
-              className="photo-preview"
-              width='150px'
-             
-            />
-          )}
-        </div>
+                {/* Aadhar ID */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Aadhar ID"
+                    variant="outlined"
+                    fullWidth
+                    name="aadharId"
+                    value={formData.aadharId}
+                    onChange={handleChange}
+                    required
+                    pattern="[0-9]{12}"
+                    maxLength="12"
+                    title="Aadhar ID must be 12 digits."
+                  />
+                </Box>
 
-        {/* Submit Button */}
-        <div style={{ gridColumn: 'span 2' }}>
-          <button type="submit" className='btn'>Submit</button>
-        </div>
-      </form>
-    </div>
+                {/* Voter ID */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <TextField
+                    label="Voter ID"
+                    variant="outlined"
+                    fullWidth
+                    name="voterId"
+                    value={formData.voterId}
+                    onChange={handleChange}
+                    required
+                  />
+                </Box>
+
+                {/* Photo Upload */}
+                <Box sx={{ flex: '1 1 45%' }}>
+                  <Typography variant="subtitle1">Upload Photo</Typography>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="form-control"
+                  />
+                  {formData.photo && (
+                    <img
+                      src={photoPreview}
+                      alt="Preview"
+                      className="mt-3"
+                      style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                    />
+                  )}
+                </Box>
+              </Box>
+
+              {/* Submit Button */}
+              <div className="mt-3 text-center">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
+                  Submit
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </Container>
+    </ThemeProvider>
   );
 }
 
