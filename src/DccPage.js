@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, TextField, MenuItem, Button, FormControl, InputLabel, Select, Typography, Card, CardContent, ThemeProvider, createTheme, Box } from '@mui/material';
+import { Container, TextField, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -57,9 +57,9 @@ function DccPage() {
               District Congress Committee Form
             </Typography>
             <form onSubmit={handleSubmit}>
-              <Box display="flex" flexWrap="wrap" gap={3}>
+              <div className="row g-3">
                 {/* Name of the District Congress Committee */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Name of the District Congress Committee"
                     variant="outlined"
@@ -69,10 +69,10 @@ function DccPage() {
                     onChange={handleChange}
                     required
                   />
-                </Box>
+                </div>
 
                 {/* Name of the Person */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Name of the Person"
                     variant="outlined"
@@ -82,30 +82,29 @@ function DccPage() {
                     onChange={handleChange}
                     required
                   />
-                </Box>
+                </div>
 
                 {/* Designation */}
-                <Box sx={{ flex: '1 1 45%' }}>
-                  <FormControl fullWidth required>
-                    <InputLabel>Designation</InputLabel>
-                    <Select
-                      name="designation"
-                      value={formData.designation}
-                      onChange={handleChange}
-                      label="Designation"
-                    >
-                      <MenuItem value="President">President</MenuItem>
-                      <MenuItem value="Vice President">Vice President</MenuItem>
-                      <MenuItem value="Treasurer">Treasurer</MenuItem>
-                      <MenuItem value="General Secretary">General Secretary</MenuItem>
-                      <MenuItem value="Secretary">Secretary</MenuItem>
-                      <MenuItem value="Executive Member">Executive Member</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Box>
+                <div className="col-12 col-md-6">
+                  <Select
+                    label="Designation"
+                    fullWidth
+                    name="designation"
+                    value={formData.designation}
+                    onChange={handleChange}
+                    required
+                  >
+                    <MenuItem value="President">President</MenuItem>
+                    <MenuItem value="Vice President">Vice President</MenuItem>
+                    <MenuItem value="Treasurer">Treasurer</MenuItem>
+                    <MenuItem value="General Secretary">General Secretary</MenuItem>
+                    <MenuItem value="Secretary">Secretary</MenuItem>
+                    <MenuItem value="Executive Member">Executive Member</MenuItem>
+                  </Select>
+                </div>
 
                 {/* Booth No */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Booth No"
                     variant="outlined"
@@ -116,10 +115,10 @@ function DccPage() {
                     onChange={handleChange}
                     required
                   />
-                </Box>
+                </div>
 
                 {/* Date of Birth */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Date of Birth"
                     variant="outlined"
@@ -130,13 +129,13 @@ function DccPage() {
                     onChange={handleChange}
                     required
                     InputLabelProps={{
-                      shrink: true,// Ensures the label stays above the input field
+                      shrink: true, // Ensures the label stays above the input field
                     }}
                   />
-                </Box>
+                </div>
 
                 {/* Gender (Radio Buttons) */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <Typography variant="subtitle1">Gender</Typography>
                   <div className="d-flex justify-content-start">
                     <label className="me-3">
@@ -160,29 +159,28 @@ function DccPage() {
                       Female
                     </label>
                   </div>
-                </Box>
+                </div>
 
                 {/* Caste (Dropdown) */}
-                <Box sx={{ flex: '1 1 45%' }}>
-                  <FormControl fullWidth required>
-                    <InputLabel>Caste</InputLabel>
-                    <Select
-                      name="caste"
-                      value={formData.caste}
-                      onChange={handleChange}
-                      label="Caste"
-                    >
-                      <MenuItem value="General">General</MenuItem>
-                      <MenuItem value="OBC">OBC</MenuItem>
-                      <MenuItem value="SC">SC</MenuItem>
-                      <MenuItem value="ST">ST</MenuItem>
-                      <MenuItem value="Minority">Minority</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Box>
+                <div className="col-12 col-md-6">
+                  <Select
+                    label="Caste"
+                    fullWidth
+                    name="caste"
+                    value={formData.caste}
+                    onChange={handleChange}
+                    required
+                  >
+                    <MenuItem value="General">General</MenuItem>
+                    <MenuItem value="OBC">OBC</MenuItem>
+                    <MenuItem value="SC">SC</MenuItem>
+                    <MenuItem value="ST">ST</MenuItem>
+                    <MenuItem value="Minority">Minority</MenuItem>
+                  </Select>
+                </div>
 
                 {/* Mobile No */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Mobile No"
                     variant="outlined"
@@ -195,10 +193,10 @@ function DccPage() {
                     maxLength="10"
                     title="Please enter a 10-digit mobile number."
                   />
-                </Box>
+                </div>
 
                 {/* Email ID */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Email ID"
                     variant="outlined"
@@ -209,10 +207,10 @@ function DccPage() {
                     onChange={handleChange}
                     required
                   />
-                </Box>
+                </div>
 
                 {/* Date of Application */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Date of Application"
                     variant="outlined"
@@ -223,13 +221,13 @@ function DccPage() {
                     onChange={handleChange}
                     required
                     InputLabelProps={{
-                      shrink: true,// Ensures the label stays above the input field
+                      shrink: true, // Ensures the label stays above the input field
                     }}
                   />
-                </Box>
+                </div>
 
                 {/* Aadhar ID */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Aadhar ID"
                     variant="outlined"
@@ -242,10 +240,10 @@ function DccPage() {
                     maxLength="12"
                     title="Aadhar ID must be 12 digits."
                   />
-                </Box>
+                </div>
 
                 {/* Voter ID */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <TextField
                     label="Voter ID"
                     variant="outlined"
@@ -255,10 +253,10 @@ function DccPage() {
                     onChange={handleChange}
                     required
                   />
-                </Box>
+                </div>
 
                 {/* Photo Upload */}
-                <Box sx={{ flex: '1 1 45%' }}>
+                <div className="col-12 col-md-6">
                   <Typography variant="subtitle1">Upload Photo</Typography>
                   <input
                     type="file"
@@ -274,8 +272,8 @@ function DccPage() {
                       style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                     />
                   )}
-                </Box>
-              </Box>
+                </div>
+              </div>
 
               {/* Submit Button */}
               <div className="mt-3 text-center">
