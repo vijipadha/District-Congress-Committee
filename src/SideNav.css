@@ -16,14 +16,18 @@
   width: 50px; /* Reduced width when collapsed */
 }
 .sidenav .toggle-btn {
-  background: none;
-  color: white;
-  font-size: 24px;
+  padding: 10px;
+  font-size: 24px; /* Adjust size based on your needs */
+  font-family: Arial, sans-serif; /* Make sure font supports "×" */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  background: transparent;
   cursor: pointer;
+  width: 40px; /* Adjust width based on your preference */
+  height: 40px; /* Adjust height based on your preference */
+  line-height: 1; /* Adjust to center vertically */
 }
 
 .sidenav h2 {
