@@ -43,7 +43,7 @@ function Login({ onLoginSuccess }) {
     onLoginSuccess();  
 
     // Redirect to HomePage after login success
-    navigate('/HomePage');
+    navigate('/dcc');
   };
 
   return (

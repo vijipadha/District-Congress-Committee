@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SideNav.css';  // Assuming you have separate styles in SideNav.css
+
 
 function SideNav() {
   // State to track sidebar visibility
