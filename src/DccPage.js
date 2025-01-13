@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Container, TextField, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
-
+import { Container, TextField, InputLabel, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
 const theme = createTheme({
   palette: {
     primary: {
@@ -8,8 +7,29 @@ const theme = createTheme({
     },
   },
 });
+const  selectConfig = {
+  label: "Designation",
+  fullWidth: true,
+  name: "designation",
+  required: true,
+  options: [
+    { value: "Designation", label: "Designation" },
+    { value: "President", label: "President" },
+    { value: "Vice President", label: "Vice President" },
+    { value: "Treasurer", label: "Treasurer" },
+    { value: "General Secretary", label: "General Secretary" },
+    { value: "Secretary", label: "Secretary" },
+    { value: "Executive Member", label: "Executive Member" },
+  ],
+};
+
 
 function DccPage() {
+  const handleChangeselect = (event) => {
+    setValue(event.target.value); // Update the local state
+  };
+  
+  const [value, setValue] = useState("Designation");
   const [formData, setFormData] = useState({
     name: '',
     personName: '',
@@ -88,7 +108,21 @@ function DccPage() {
 
                 {/* Designation */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <Select
+                {/* <InputLabel id={`${selectConfig.name}-label`}>{selectConfig.label}</InputLabel> */}
+                <Select
+                fullWidth
+        labelId={`${selectConfig.name}-label`}
+        name={selectConfig.name}
+        value={value} // Static binding to the local state
+        onChange={handleChangeselect} // Static handler for local state update
+      >
+        {selectConfig.options.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+     </Select>
+              {/*      <Select
                     label="Designation"
                     fullWidth
                     name="designation"
@@ -102,7 +136,7 @@ function DccPage() {
                     <MenuItem value="General Secretary">General Secretary</MenuItem>
                     <MenuItem value="Secretary">Secretary</MenuItem>
                     <MenuItem value="Executive Member">Executive Member</MenuItem>
-                  </Select>
+                  </Select> */}
                 </div>
 
                 {/* Booth No */}
