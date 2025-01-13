@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route , useNavigate } from 'react-router-dom';
 import Login from './Login';
 //import HomePage from './HomePage';
 import SideNav from './SideNav';
@@ -17,14 +17,15 @@ import FrontalDepartment from './FrontalDepartment';
 import Mandal from './Mandal';
 import './App.css';  // Your app's styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Style.css';
 
+ 
+function App() {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // State to track login status
   const handleLoginRedirect = () => {
     navigate("/Login");
   };
- 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);  // State to track login status
-
   // Handle login success
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);

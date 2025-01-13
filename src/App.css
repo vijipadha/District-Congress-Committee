@@ -73,7 +73,6 @@ h1 {
 .sidenav li:last-child {
   border-bottom: none; /* Remove the line on the last list item */
 }
-
 .sidenav li a {
   color: white;
   text-decoration: none;

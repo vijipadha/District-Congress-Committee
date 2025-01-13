@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Container, TextField, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
+import { FormControlLabel, Radio } from '@mui/material';
+import './Style.css';
 
 const theme = createTheme({
   palette: {
@@ -172,10 +174,12 @@ function BlockPage() {
                 </div>
 
                 {/* Gender (Radio Buttons) */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4 d-flex align-items-center">
                   <Typography variant="subtitle1">Gender</Typography>
                   <div className="d-flex justify-content-start">
-                    <label className="me-2">
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    {/* <label className="me-2">
                       <input
                         type="radio"
                         name="gender"
@@ -184,8 +188,8 @@ function BlockPage() {
                         onChange={handleChange}
                       />
                       <span className="ms-1">Male</span>
-                    </label>
-                    <label>
+                    </label> */}
+                    {/* <label>
                       <input
                         type="radio"
                         name="gender"
@@ -194,7 +198,7 @@ function BlockPage() {
                         onChange={handleChange}
                       />
                       <span className="ms-1">Female</span>
-                    </label>
+                    </label> */}
                   </div>
                 </div>
 
@@ -313,11 +317,10 @@ function BlockPage() {
               </div>
 
               {/* Submit Button */}
-              <div className="mt-3 text-center">
+              <div className="mt-3 text-center sub-btn">
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
                 >
                   Submit
                 </Button>

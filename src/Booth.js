@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, TextField, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
-
+import { FormControlLabel, Radio } from '@mui/material';
 const theme = createTheme({
   palette: {
     primary: {
@@ -207,9 +207,12 @@ function Booth() {
                 </div>
 
                 {/* Gender (Radio Buttons) */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <Typography variant="subtitle1">Gender</Typography>
-                  <div className="d-flex justify-content-start">
+              <div className="col-12 col-sm-6 col-md-6 col-lg-4 d-flex align-items-center">
+                                                                         <Typography variant="subtitle1">Gender</Typography>
+                                                                         <div className="d-flex justify-content-start">
+                                                                             <FormControlLabel value="female" control={<Radio />} label="Female" />
+                                                                                             <FormControlLabel value="male" control={<Radio />} label="Male" />
+                                                          
                     <label className="me-2">
                       <input
                         type="radio"
@@ -348,7 +351,7 @@ function Booth() {
               </div>
 
               {/* Submit Button */}
-              <div className="mt-3 text-center">
+              <div className="mt-3 text-center sub-btn">
                 <Button
                   type="submit"
                   variant="contained"

@@ -85,10 +85,11 @@ function Login({ onLoginSuccess }) {
             required
           />
         </div>
-
+    <div className="form-group d-flex align-items-center justify-content-center">
         <button type="submit" className="btn">
           Login
         </button>
+        </div>
       </form>
       
     </div>

@@ -8,6 +8,9 @@
     width: 100%;
     color: #3a704c;
   }
+  .login-page{
+    margin: 0 auto;
+  }
   .login-form {
     margin: 20px auto;
     padding: 20px;
@@ -115,4 +118,7 @@ body {
     font-size: 18px;
     line-height: 1.5;
   }
-  
+  .sub-btn button{
+    background: #3a704c;
+    color: #fff;
+  }

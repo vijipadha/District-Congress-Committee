@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Container, TextField, InputLabel, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
+import { FormControlLabel, Radio } from '@mui/material';
+import './Style.css';
+import './App.css';
 const theme = createTheme({
   palette: {
     primary: {
@@ -25,6 +28,25 @@ const  selectConfig = {
 
 
 function DccPage() {
+ 
+  const  generalConfig = {
+    label: "General",
+    fullWidth: true,
+    name: "general",
+    required: true,
+    options: [
+      { value: "General", label: "General" },
+      { value: "OBC", label: "OBC" },
+      { value: "SC", label: "SC" },
+      { value: "ST", label: "ST" },
+      { value: "Minority", label: "Minority" },
+    
+    ],
+  };
+  const [general, setGeneral] = useState("General");
+  const handleGeneralChange = (event) => {
+    setGeneral(event.target.value);
+  };
   const handleChangeselect = (event) => {
     setValue(event.target.value); // Update the local state
   };
@@ -108,7 +130,6 @@ function DccPage() {
 
                 {/* Designation */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                {/* <InputLabel id={`${selectConfig.name}-label`}>{selectConfig.label}</InputLabel> */}
                 <Select
                 fullWidth
         labelId={`${selectConfig.name}-label`}
@@ -171,10 +192,12 @@ function DccPage() {
                 </div>
 
                 {/* Gender (Radio Buttons) */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4 d-flex align-items-center">
                   <Typography variant="subtitle1">Gender</Typography>
                   <div className="d-flex justify-content-start">
-                    <label className="me-2">
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    {/* <label className="me-2">
                       <input
                         type="radio"
                         name="gender"
@@ -193,13 +216,26 @@ function DccPage() {
                         onChange={handleChange}
                       />
                       <span className="ms-1">Female</span>
-                    </label>
+                    </label> */}
                   </div>
                 </div>
 
                 {/* Caste (Dropdown) */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <Select
+                <Select
+                fullWidth
+        labelId={`${generalConfig.name}-label`}
+        name={generalConfig.name}
+        value={general} // Static binding to the local state
+        onChange={handleGeneralChange} // Static handler for local state update
+      >
+        {generalConfig.options.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+     </Select>
+                  {/* <Select
                     label="Caste"
                     fullWidth
                     name="caste"
@@ -212,7 +248,7 @@ function DccPage() {
                     <MenuItem value="SC">SC</MenuItem>
                     <MenuItem value="ST">ST</MenuItem>
                     <MenuItem value="Minority">Minority</MenuItem>
-                  </Select>
+                  </Select> */}
                 </div>
 
                 {/* Mobile No */}
@@ -312,11 +348,9 @@ function DccPage() {
               </div>
 
               {/* Submit Button */}
-              <div className="mt-3 text-center">
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
+              <div className="mt-3 text-center sub-btn">
+                <Button className='sub-btn'
+                  type="submit"               
                 >
                   Submit
                 </Button>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideNav from "./SideNav";
-
+import './Style.css';
 function Dcc() {
     return (
     <div>
