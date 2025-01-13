@@ -185,7 +185,7 @@ function Register() {
         </div>
         <div className='col-md-12'>
           <button type="submit" onClick={handleLoginRedirect} className="btn">
-              Login
+              Register
         </button>
         </div>
       </div>
