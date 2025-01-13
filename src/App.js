@@ -1,51 +1,65 @@
-import logo from './logo.svg';
-import React, { useState } from "react";
-import './App.css';
-import './Style.css';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import Register from './Register';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Login from './Login';
-import Dashboard from './Dashboard';
-import Dcc from './dcc';
+//import HomePage from './HomePage';
 import SideNav from './SideNav';
-function Home() {
-  const navigate = useNavigate();
+import DccPage from './DccPage';
+import BlockPage from './BlockPage';
+import MunicipalityPage from './MunicipalityPage';
+import Town from './Town';
+import TownPanchayat from './TownPanchayat';
+import Village from './Village';
+import Division from './Division';
+import DivisionWard from './DivisionWard';
+import Ward from './Ward';
+import Booth from './Booth';
+import FrontalDepartment from './FrontalDepartment';
+import Mandal from './Mandal';
+import './App.css';  // Your app's styles
+import 'bootstrap/dist/css/bootstrap.min.css';
 
   const handleLoginRedirect = () => {
     navigate("/Login");
   };
-  return (
-    <div className="home">
-      <h1>Welcome to the DCC</h1>
-      <button onClick={handleLoginRedirect} className="btn">
-        Register
-      </button>
-    </div>
-  );
-}
+ 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // State to track login status
+
+  // Handle login success
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
   };
 
-
   return (
-    <Router>    
-      <div className="app">
-      <div className="title Head">
-        <h2 className='app-title'>District Congress Committee</h2>
-      </div>
+    <div className="App">
+      {!isLoggedIn ? (
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-           <Route path="/dcc" element={<Dcc />} />
+          <Route path="/" element={<Login onLoginSuccess={handleLoginSuccess} />} />
         </Routes>
-      </div>
-      
-    </Router>
+      ) : (
+        <div className="dashboard">
+          <SideNav />  {/* Display SideNav only after login */}
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/dcc" element={<DccPage />} />
+              <Route path="/block" element={<BlockPage />} />
+              <Route path="/municipality" element={<MunicipalityPage />} />
+              <Route path="/town" element={<Town />} />
+              <Route path="/townpanchayat" element={<TownPanchayat />} />
+              <Route path="/village" element={<Village />} />
+              <Route path="/division" element={<Division />} />
+              <Route path="/divisionward" element={<DivisionWard />} />
+              <Route path="/ward" element={<Ward />} />
+              <Route path="/booth" element={<Booth />} />
+              <Route path="/frontaldepartment" element={<FrontalDepartment />} />
+              <Route path="/mandal" element={<Mandal />} />
 
+            </Routes>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 

@@ -1,35 +1,38 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Dcc from "./dcc";
-import "./Style.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const SideNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
+function SideNav() {
+  // State to track sidebar visibility
+  const [collapsed, setCollapsed] = useState(false);
+
+  // Toggle the sidebar between minimized and expanded
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    setCollapsed(!collapsed);
   };
 
   return (
-  
-    <div className="sidenav-container">
-      {/* Sidebar */}
-      <div className="sidenav">
-      <Link to="/dcc">DCC</Link>
-        <a href="#about">BLOCK</a>
-        <a href="#services">MUNICIPALITY</a>
-        <a href="#contact">TOWN</a>
-        <a href="#contact">TOWN</a>
-      </div>
-
-      {/* Main Content */}
-      <div className="main-content">
-    
-        <h1>Welcome to My Website</h1>
-        <p>This is the main content area. The sidebar is always open.</p>
-      </div>
+    <div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
+      <button className="toggle-btn" onClick={toggleSidebar}>
+        {collapsed ? '☰' : '×'}
+      </button>
+      <h2 className={`sidenav-title ${collapsed ? 'collapsed' : ''}`}>COMMITTEES</h2>
+      <ul>
+        <li><Link to="/dcc">DCC</Link></li>
+        <li><Link to="/block">BLOCK</Link></li>
+        <li><Link to="/municipality">MUNICIPALITY</Link></li>
+        <li><Link to="/town">TOWN</Link></li>
+        <li><Link to="/townpanchayat">TOWN PANCHAYAT</Link></li>
+        <li><Link to="/village">VILLAGE</Link></li>
+        <li><Link to="/division">DIVISION</Link></li>
+        <li><Link to="/divisionward">DIVISION WARD</Link></li>
+        <li><Link to="/ward">WARD</Link></li>
+        <li><Link to="/booth">BOOTH</Link></li>
+        <li><Link to="/frontaldepartment">FRONTAL DEPARTMENT</Link></li>
+        <li><Link to="/mandal">MANDAL</Link></li>
+      </ul>
     </div>
   );
-};
+}
 
 export default SideNav;

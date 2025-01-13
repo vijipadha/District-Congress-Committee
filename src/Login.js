@@ -1,22 +1,23 @@
-
 import React, { useState } from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import './Style.css';
 import Dashboard from './Dashboard';
 
-function Login() {
-    const navigate = useNavigate();
-    
+function Login({ onLoginSuccess }) {    
       const handleLoginRedirect = () => {
         navigate("/Dashboard");
       };
+
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,6 +25,7 @@ function Login() {
       [name]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = formData;
@@ -44,46 +46,53 @@ function Login() {
     setError("");
     setSuccess("Login successful!");
     console.log("Logged in with:", formData);
+
+    // Notify parent component (App) that login is successful
+    onLoginSuccess();  
+
+    // Redirect to HomePage after login success
+    navigate('/dcc');
   };
 
   return (
-    <div className="app">
-    <h1>Login Form</h1>
-    <form onSubmit={handleSubmit} className="login-form">
-      {error && <p className="error">{error}</p>}
-      {success && <p className="success">{success}</p>}
+    <div className="login-page">
+      
+      <h1>Login Form</h1>
+      <form onSubmit={handleSubmit} className="login-form">
+        {error && <p className="error">{error}</p>}
+        {success && <p className="success">{success}</p>}
 
-      <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-<div className="btn">
-      <button type="submit" className="btn" onClick={handleLoginRedirect}>
-        Login
-      </button>
-      </div>
-    </form>
-  </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
+        <button type="submit" className="btn">
+          Login
+        </button>
+      </form>
+      
+    </div>
+    
   );
 }
 

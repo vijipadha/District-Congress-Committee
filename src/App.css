@@ -1,54 +1,161 @@
-.app {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin-top: 50px;
+/* App.css */
+
+/* Layout: Make room for the side navigation bar */
+.App {
+  display: flex;
+  height: 100vh;
 }
 
 .login-form {
   margin: 0 auto;
+}
+.content {
+  margin-left: 220px;  /* This is the width of the side navigation bar */
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #f9f9f9;
+  flex-grow: 1;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+h1 {
+  color: #333;
+}
+@media screen and (max-width: 480px) {
+  .content{
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content{
+    margin-left: 20px;
+  }
+}
+/* Default (Desktop) styles */
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(46, 60, 104);
+  padding-top: 20px;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: width 0.3s ease; /* Smooth transition */
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+.sidenav.collapsed {
+  width: 50px; /* Reduced width when collapsed */
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.btn {
-  background-color: #007bff;
+.sidenav h2 {
   color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  transition: opacity 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.sidenav.collapsed h2 {
+  opacity: 0;
 }
 
-.error {
-  color: red;
-  margin-bottom: 10px;
+.sidenav ul {
+  list-style-type: none;
+  padding: 6px 6px 6px 6px;
+  font-size: 15px;
 }
 
-.success {
-  color: green;
-  margin-bottom: 10px;
+.sidenav li {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #575757; /* Add a line between the links */
+}
+
+.sidenav li:last-child {
+  border-bottom: none; /* Remove the line on the last list item */
+}
+
+.sidenav li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.sidenav li a:hover {
+  background-color: #575757;
+}
+
+/* Mobile (Small screen) styles */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 200px; /* Reduced width for mobile screens */
+    padding-top: 15px;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    display: block;
+  }
+
+  .sidenav h2 {
+    font-size: 15px; /* Smaller font size for the title */
+  }
+
+  .sidenav ul {
+    padding-left: 20px; /* Adjust padding */
+  }
+
+  .sidenav li {
+    padding: 8px; /* Slightly smaller padding for list items */
+  }
+
+  .sidenav li a {
+    font-size: 18px; /* Adjust font size for mobile devices */
+  }
+
+  .sidenav.show {
+    width: 200px; /* Sidebar shown on mobile with this width */
+    display: block;
+  }
+
+  /* Ensure form adjusts to available screen width */
+  .main-content {
+    margin-left: 200px; /* Space for the sidebar */
+    transition: margin-left 0.3s ease;
+    padding-left: 0;
+  }
+  /* If the sidebar is collapsed, the content should be displayed properly */
+  .sidenav.collapsed + .main-content {
+    margin-left: 0 !important; /* No margin when sidebar is collapsed */
+  }
+}
+
+/* Extra small screens (e.g., mobile devices in portrait mode) */
+@media screen and (max-width: 480px) {
+  .sidenav {
+    width: 100%; /* Full width on small screens */
+    padding-top: 10px;
+  }
+
+  .sidenav h2 {
+    font-size: 18px; /* Further reduce font size */
+  }
+
+  .sidenav ul {
+    padding-left: 10px; /* Even smaller padding */
+  }
+
+  .sidenav li {
+    padding: 6px; /* Smaller padding on items */
+  }
+
+  .sidenav li a {
+    font-size: 16px; /* Smaller font size for mobile */
+  }
+
+  /* Adjust the form's margin */
+  .main-content {
+    margin-left: 0; /* Remove sidebar margin on extra small screens */
+    padding-left: 0;
+  }
 }
