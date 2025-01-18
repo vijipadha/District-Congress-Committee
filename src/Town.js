@@ -8,8 +8,51 @@ const theme = createTheme({
     },
   },
 });
+const  selectDesigConfig = {
+  label: "Designation",
+  fullWidth: true,
+  name: "designation",
+  required: true,
+  options: [
+    { value: "Designation", label: "Designation" },
+    { value: "President", label: "President" },
+    { value: "Vice President", label: "Vice President" },
+    { value: "Treasurer", label: "Treasurer" },
+    { value: "General Secretary", label: "General Secretary" },
+    { value: "Secretary", label: "Secretary" },
+    { value: "Executive Member", label: "Executive Member" },
+  ],
+};
+const  selectCasteConfig = {
+  label: "Caste",
+  fullWidth: true,
+  name: "caste",
+  required: true,
+  options: [
+    { value: "Caste", label: "Caste" },
+    { value: "General", label: "General" },
+    { value: "OBC", label: "OBC" },
+    { value: "SC", label: "SC" },
+    { value: "ST", label: "ST" },
+    { value: "Minority", label: "Minority" },
+    
+  ],
+};
 
 function Town() {
+  
+  // Separate state for designation and caste
+        const [designation, setDesignation] = useState("Designation");
+        const [caste, setCaste] = useState("Caste");
+      
+        const handleChangeSelect = (event) => {
+          const { name, value } = event.target;
+          if (name === "designation") {
+            setDesignation(value);
+          } else if (name === "caste") {
+            setCaste(value);
+          }
+        };
   const [formData, setFormData] = useState({
     name: '',
     personName: '',
@@ -123,6 +166,22 @@ function Town() {
 
                 {/* Designation */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                                                                {/* <InputLabel id={`${selectConfig.name}-label`}>{selectConfig.label}</InputLabel> */}
+                                                                <Select
+                                                                fullWidth
+                                                        labelId={`${selectDesigConfig.name}-label`}
+                                                        name={selectDesigConfig.name}
+                                                        value={designation} // Static binding to the local state
+                                                        onChange={handleChangeSelect} // Static handler for local state update
+                                                      >
+                                                        {selectDesigConfig.options.map((option) => (
+                                                          <MenuItem key={option.value} value={option.value}>
+                                                            {option.label}
+                                                          </MenuItem>
+                                                        ))}
+                                                     </Select>
+                                                     </div>
+                {/* <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Select
                     label="Designation"
                     fullWidth
@@ -138,7 +197,7 @@ function Town() {
                     <MenuItem value="Secretary">Secretary</MenuItem>
                     <MenuItem value="Executive Member">Executive Member</MenuItem>
                   </Select>
-                </div>
+                </div> */}
 
                 {/* Booth No */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
@@ -199,7 +258,22 @@ function Town() {
                 </div>
 
                 {/* Caste (Dropdown) */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                                                                <Select
+                                                                fullWidth
+                                                        labelId={`${selectCasteConfig.name}-label`}
+                                                        name={selectCasteConfig.name}
+                                                        value={caste} // Static binding to the local state
+                                                        onChange={handleChangeSelect} // Static handler for local state update
+                                                      >
+                                                        {selectCasteConfig.options.map((option) => (
+                                                          <MenuItem key={option.value} value={option.value}>
+                                                            {option.label}
+                                                          </MenuItem>
+                                                        ))}
+                                                     </Select>
+                                                     </div>
+                {/* <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Select
                     label="Caste"
                     fullWidth
@@ -214,7 +288,7 @@ function Town() {
                     <MenuItem value="ST">ST</MenuItem>
                     <MenuItem value="Minority">Minority</MenuItem>
                   </Select>
-                </div>
+                </div> */}
 
                 {/* Mobile No */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">

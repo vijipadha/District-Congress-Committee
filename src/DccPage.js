@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, TextField, InputLabel, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
+import { Container, TextField, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
 const theme = createTheme({
   palette: {
     primary: {
@@ -7,7 +7,7 @@ const theme = createTheme({
     },
   },
 });
-const  selectConfig = {
+const  selectDesigConfig = {
   label: "Designation",
   fullWidth: true,
   name: "designation",
@@ -22,14 +22,35 @@ const  selectConfig = {
     { value: "Executive Member", label: "Executive Member" },
   ],
 };
-
+const  selectCasteConfig = {
+  label: "Caste",
+  fullWidth: true,
+  name: "caste",
+  required: true,
+  options: [
+    { value: "Caste", label: "Caste" },
+    { value: "General", label: "General" },
+    { value: "OBC", label: "OBC" },
+    { value: "SC", label: "SC" },
+    { value: "ST", label: "ST" },
+    { value: "Minority", label: "Minority" },
+    
+  ],
+};
 
 function DccPage() {
-  const handleChangeselect = (event) => {
-    setValue(event.target.value); // Update the local state
+  // Separate state for designation and caste
+  const [designation, setDesignation] = useState("Designation");
+  const [caste, setCaste] = useState("Caste");
+
+  const handleChangeSelect = (event) => {
+    const { name, value } = event.target;
+    if (name === "designation") {
+      setDesignation(value);
+    } else if (name === "caste") {
+      setCaste(value);
+    }
   };
-  
-  const [value, setValue] = useState("Designation");
   const [formData, setFormData] = useState({
     name: '',
     personName: '',
@@ -111,17 +132,18 @@ function DccPage() {
                 {/* <InputLabel id={`${selectConfig.name}-label`}>{selectConfig.label}</InputLabel> */}
                 <Select
                 fullWidth
-        labelId={`${selectConfig.name}-label`}
-        name={selectConfig.name}
-        value={value} // Static binding to the local state
-        onChange={handleChangeselect} // Static handler for local state update
+        labelId={`${selectDesigConfig.name}-label`}
+        name={selectDesigConfig.name}
+        value={designation} // Static binding to the local state
+        onChange={handleChangeSelect} // Static handler for local state update
       >
-        {selectConfig.options.map((option) => (
+        {selectDesigConfig.options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
         ))}
      </Select>
+     </div>
               {/*      <Select
                     label="Designation"
                     fullWidth
@@ -137,7 +159,7 @@ function DccPage() {
                     <MenuItem value="Secretary">Secretary</MenuItem>
                     <MenuItem value="Executive Member">Executive Member</MenuItem>
                   </Select> */}
-                </div>
+                
 
                 {/* Booth No */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
@@ -199,7 +221,21 @@ function DccPage() {
 
                 {/* Caste (Dropdown) */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <Select
+                <Select
+                fullWidth
+        labelId={`${selectCasteConfig.name}-label`}
+        name={selectCasteConfig.name}
+        value={caste} // Static binding to the local state
+        onChange={handleChangeSelect} // Static handler for local state update
+      >
+        {selectCasteConfig.options.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+     </Select>
+     </div>
+                  {/* <Select
                     label="Caste"
                     fullWidth
                     name="caste"
@@ -212,8 +248,8 @@ function DccPage() {
                     <MenuItem value="SC">SC</MenuItem>
                     <MenuItem value="ST">ST</MenuItem>
                     <MenuItem value="Minority">Minority</MenuItem>
-                  </Select>
-                </div>
+                  </Select> */}
+                
 
                 {/* Mobile No */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">

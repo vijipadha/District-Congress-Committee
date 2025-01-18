@@ -8,8 +8,33 @@ const theme = createTheme({
     },
   },
 });
+const  selectCasteConfig = {
+  label: "Caste",
+  fullWidth: true,
+  name: "caste",
+  required: true,
+  options: [
+    { value: "Caste", label: "Caste" },
+    { value: "General", label: "General" },
+    { value: "OBC", label: "OBC" },
+    { value: "SC", label: "SC" },
+    { value: "ST", label: "ST" },
+    { value: "Minority", label: "Minority" },
+    
+  ],
+};
 
 function Mandal() {
+  
+        
+        const [caste, setCaste] = useState("Caste");
+      
+        const handleChangeSelect = (event) => {
+          const value = event.target;
+          
+            setCaste(value);
+          
+        };
   const [formData, setFormData] = useState({
     name: '',
     personName: '',
@@ -196,6 +221,22 @@ function Mandal() {
                 {/* Caste (Dropdown) */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <Select
+                    fullWidth
+                    labelId={`${selectCasteConfig.name}-label`}
+                    name={selectCasteConfig.name}
+                    value={caste} // Static binding to the local state
+                    onChange={handleChangeSelect} // Static handler for local state update
+                  >
+                  {selectCasteConfig.options.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                   ))}
+                  </Select>
+                </div>
+
+                {/* <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <Select
                     label="Caste"
                     fullWidth
                     name="caste"
@@ -209,7 +250,7 @@ function Mandal() {
                     <MenuItem value="ST">ST</MenuItem>
                     <MenuItem value="Minority">Minority</MenuItem>
                   </Select>
-                </div>
+                </div> */}
 
                 {/* Mobile No */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
