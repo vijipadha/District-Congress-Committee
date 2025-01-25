@@ -7,7 +7,7 @@ const theme = createTheme({
     },
   },
 });
-const  selectDesigConfig = {
+const selectDesigConfig = {
   label: "Designation",
   fullWidth: true,
   name: "designation",
@@ -20,9 +20,10 @@ const  selectDesigConfig = {
     { value: "General Secretary", label: "General Secretary" },
     { value: "Secretary", label: "Secretary" },
     { value: "Executive Member", label: "Executive Member" },
+    { value: "New Member Enroll", label: "New Member Enroll" },
   ],
 };
-const  selectCasteConfig = {
+const selectCasteConfig = {
   label: "Caste",
   fullWidth: true,
   name: "caste",
@@ -30,11 +31,15 @@ const  selectCasteConfig = {
   options: [
     { value: "Caste", label: "Caste" },
     { value: "General", label: "General" },
-    { value: "OBC", label: "OBC" },
+    { value: "BC", label: "BC" },
+    { value: "MBC", label: "MBC" },
+    { value: "BCM", label: "BCM" },
     { value: "SC", label: "SC" },
     { value: "ST", label: "ST" },
-    { value: "Minority", label: "Minority" },
+    { value: "DC", label: "DC" },
+    { value: "Others", label: "Others" },
     
+
   ],
 };
 
@@ -100,24 +105,73 @@ function DccPage() {
             </Typography>
             <form onSubmit={handleSubmit}>
               <div className="row g-3">
-                {/* Name of the District Congress Committee */}
+                {/* Name of the City */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
-                    label="Name of the District Congress Committee"
+                    label="Name of the City"
                     variant="outlined"
                     fullWidth
                     name="name"
-                    value={formData.name}
+                    value={formData.nameCity}
                     onChange={handleChange}
                     required
                   />
                 </div>
-                
-
-                {/* Name of the Person */}
+                {/* Corporation */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
-                    label="Name of the Person"
+                    label="Corporation"
+                    variant="outlined"
+                    fullWidth
+                    name="name"
+                    value={formData.Corporation}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Name of the Zone */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Name of the Zone"
+                    variant="outlined"
+                    fullWidth
+                    name="name"
+                    value={formData.nameZone}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Name of the Parliament */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Name of the Parliament"
+                    variant="outlined"
+                    fullWidth
+                    name="name"
+                    value={formData.nameParliament}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Name of the Assembly */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Name of the Assembly"
+                    variant="outlined"
+                    fullWidth
+                    name="name"
+                    value={formData.nameAssembly}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+
+
+                {/* Name  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Name"
                     variant="outlined"
                     fullWidth
                     name="personName"
@@ -126,55 +180,90 @@ function DccPage() {
                     required
                   />
                 </div>
-
-                {/* Designation */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                {/* <InputLabel id={`${selectConfig.name}-label`}>{selectConfig.label}</InputLabel> */}
-                <Select
-                fullWidth
-        labelId={`${selectDesigConfig.name}-label`}
-        name={selectDesigConfig.name}
-        value={designation} // Static binding to the local state
-        onChange={handleChangeSelect} // Static handler for local state update
-      >
-        {selectDesigConfig.options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-     </Select>
-     </div>
-              {/*      <Select
-                    label="Designation"
-                    fullWidth
-                    name="designation"
-                    value={formData.designation}
-                    onChange={handleChange}
-                    required
-                  >
-                    <MenuItem value="President">President</MenuItem>
-                    <MenuItem value="Vice President">Vice President</MenuItem>
-                    <MenuItem value="Treasurer">Treasurer</MenuItem>
-                    <MenuItem value="General Secretary">General Secretary</MenuItem>
-                    <MenuItem value="Secretary">Secretary</MenuItem>
-                    <MenuItem value="Executive Member">Executive Member</MenuItem>
-                  </Select> */}
-                
-
-                {/* Booth No */}
+                {/* Aadhar ID  */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
-                    label="Booth No"
+                    label="Aadhar ID"
                     variant="outlined"
                     fullWidth
-                    name="boothNo"
-                    type="number"
+                    name="personName"
+                    value={formData.aadharId}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Voter ID  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Voter ID"
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
+                    value={formData.voterId}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Voter's Serial Number  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Voter's Serial Number"
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
+                    value={formData.voterSno}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Ward Number  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Ward No."
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
+                    value={formData.wardNo}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Booth Number  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Booth No."
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
                     value={formData.boothNo}
                     onChange={handleChange}
                     required
                   />
                 </div>
+                {/* Mobile Number  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Mobile Number"
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
+                    value={formData.mobileNo}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {/* Email ID  */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <TextField
+                    label="Email ID"
+                    variant="outlined"
+                    fullWidth
+                    name="personName"
+                    value={formData.email}
+                    onChange={handleChange}
 
+                  />
+                </div>
                 {/* Date of Birth */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
                   <TextField
@@ -192,9 +281,33 @@ function DccPage() {
                   />
                 </div>
 
+
+
+
+
+
+                {/* Designation */}
+                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
+                  {/* <InputLabel id={`${selectConfig.name}-label`}>{selectConfig.label}</InputLabel> */}
+                  
+                  <Select
+                    fullWidth
+                    labelId={`${selectDesigConfig.name}-label`}
+                    name={selectDesigConfig.name}
+                    value={designation} // Static binding to the local state
+                    onChange={handleChangeSelect} // Static handler for local state update
+                    required
+                  >
+                    {selectDesigConfig.options.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </div>
                 {/* Gender (Radio Buttons) */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <Typography variant="subtitle1">Gender</Typography>
+                  <Typography variant="subtitle1">Gender<span>*</span></Typography>
                   <div className="d-flex justify-content-start">
                     <label className="me-2">
                       <input
@@ -203,39 +316,74 @@ function DccPage() {
                         value="Male"
                         checked={formData.gender === 'Male'}
                         onChange={handleChange}
+                        required
                       />
                       <span className="ms-1">Male</span>
                     </label>
-                    <label>
+                    <label className="me-2">
                       <input
                         type="radio"
                         name="gender"
                         value="Female"
                         checked={formData.gender === 'Female'}
                         onChange={handleChange}
+                        required
                       />
                       <span className="ms-1">Female</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Others"
+                        checked={formData.gender === 'Others'}
+                        onChange={handleChange}
+                        required
+                      />
+                      <span className="ms-1">Others</span>
                     </label>
                   </div>
                 </div>
 
                 {/* Caste (Dropdown) */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                <Select
-                fullWidth
-        labelId={`${selectCasteConfig.name}-label`}
-        name={selectCasteConfig.name}
-        value={caste} // Static binding to the local state
-        onChange={handleChangeSelect} // Static handler for local state update
-      >
-        {selectCasteConfig.options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-     </Select>
-     </div>
-                  {/* <Select
+                  <Select
+                    fullWidth
+                    labelId={`${selectCasteConfig.name}-label`}
+                    name={selectCasteConfig.name}
+                    value={caste} // Static binding to the local state
+                    onChange={handleChangeSelect} // Static handler for local state update
+                  >
+                    {selectCasteConfig.options.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </div>
+                {/*      <Select
+                    label="Designation"
+                    fullWidth
+                    name="designation"
+                    value={formData.designation}
+                    onChange={handleChange}
+                    required
+                  >
+                    <MenuItem value="President">President</MenuItem>
+                    <MenuItem value="Vice President">Vice President</MenuItem>
+                    <MenuItem value="Treasurer">Treasurer</MenuItem>
+                    <MenuItem value="General Secretary">General Secretary</MenuItem>
+                    <MenuItem value="Secretary">Secretary</MenuItem>
+                    <MenuItem value="Executive Member">Executive Member</MenuItem>
+                  </Select> */}
+
+
+
+
+
+
+
+                {/* <Select
                     label="Caste"
                     fullWidth
                     name="caste"
@@ -249,83 +397,9 @@ function DccPage() {
                     <MenuItem value="ST">ST</MenuItem>
                     <MenuItem value="Minority">Minority</MenuItem>
                   </Select> */}
-                
 
-                {/* Mobile No */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <TextField
-                    label="Mobile No"
-                    variant="outlined"
-                    fullWidth
-                    name="mobileNo"
-                    value={formData.mobileNo}
-                    onChange={handleChange}
-                    required
-                    pattern="[0-9]{10}"
-                    maxLength="10"
-                    title="Please enter a 10-digit mobile number."
-                  />
-                </div>
 
-                {/* Email ID */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <TextField
-                    label="Email ID"
-                    variant="outlined"
-                    fullWidth
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                {/* Date of Application */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <TextField
-                    label="Date of Application"
-                    variant="outlined"
-                    fullWidth
-                    type="date"
-                    name="dateOfApplication"
-                    value={formData.dateOfApplication}
-                    onChange={handleChange}
-                    required
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </div>
-
-                {/* Aadhar ID */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <TextField
-                    label="Aadhar ID"
-                    variant="outlined"
-                    fullWidth
-                    name="aadharId"
-                    value={formData.aadharId}
-                    onChange={handleChange}
-                    required
-                    pattern="[0-9]{12}"
-                    maxLength="12"
-                    title="Aadhar ID must be 12 digits."
-                  />
-                </div>
-
-                {/* Voter ID */}
-                <div className="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <TextField
-                    label="Voter ID"
-                    variant="outlined"
-                    fullWidth
-                    name="voterId"
-                    value={formData.voterId}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+               
 
                 {/* Photo Upload */}
                 <div className="col-12 col-sm-6 col-md-6 col-lg-4">

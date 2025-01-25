@@ -30,6 +30,7 @@ function SideNav() {
         <li><Link to="/booth">BOOTH</Link></li>
         <li><Link to="/frontaldepartment">FRONTAL DEPARTMENT</Link></li>
         <li><Link to="/mandal">MANDAL</Link></li>
+        <li><Link to="/masters">MASTERS</Link></li>
       </ul>
     </div>
   );
