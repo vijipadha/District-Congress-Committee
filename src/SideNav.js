@@ -44,12 +44,12 @@ function SideNav() {
           </button>
           {mastersOpen && (
             <ul className="submenu">
-              <li><Link to="/masters/citymaster">CityMaster</Link></li>
-              <li><Link to="/masters/corporationmaster">CorporationMaster</Link></li>
-              <li><Link to="/masters/zonemaster">ZoneMaster</Link></li>
-              <li><Link to="/masters/parliamentmaster">ParliamentMaster</Link></li>
-              <li><Link to="/masters/assemblymaster">AssemblyMaster</Link></li>
-              <li><Link to="/masters/designationmaster">DesignationMaster</Link></li>
+              <li><Link to="/masters/citymaster">City Master</Link></li>
+              <li><Link to="/masters/corporationmaster">Corporation Master</Link></li>
+              <li><Link to="/masters/zonemaster">Zone Master</Link></li>
+              <li><Link to="/masters/parliamentmaster">Parliament Master</Link></li>
+              <li><Link to="/masters/assemblymaster">Assembly Master</Link></li>
+              <li><Link to="/masters/designationmaster">Designation Master</Link></li>
               
             </ul>
           )}

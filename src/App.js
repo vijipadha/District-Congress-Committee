@@ -15,6 +15,9 @@ import Ward from './Ward';
 import Booth from './Booth';
 import FrontalDepartment from './FrontalDepartment';
 import Mandal from './Mandal';
+import CityMaster from './Masters/CityMaster';
+import CorporationMaster from './Masters/CorporationMaster';
+
 import './App.css';  // Your app's styles
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -50,6 +53,9 @@ function App() {
               <Route path="/booth" element={<Booth />} />
               <Route path="/frontaldepartment" element={<FrontalDepartment />} />
               <Route path="/mandal" element={<Mandal />} />
+              <Route path="/masters/citymaster" element={<CityMaster />} />
+              <Route path="/masters/corporationmaster" element={<CorporationMaster />} />
+
 
             </Routes>
           </div>

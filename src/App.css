@@ -1,42 +1,37 @@
-/* App.css */
+/* Ensure all elements include padding and border in their width calculations */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Layout: Make room for the side navigation bar */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;  /* Full height for the page */
+  width: 100%;   /* Full width for the page */
+}
+
+/* The main App container should take up the full height and width */
 .App {
   display: flex;
-  height: 100vh;
+  height: 100vh;  /* Full viewport height */
+  width: 100%;    /* Full width */
+  background-color: #f4f4f4;  /* Background color covering the entire screen */
 }
 
-.content {
-  margin-left: 220px;  /* This is the width of the side navigation bar */
-  padding: 20px;
-  flex-grow: 1;
-}
-
-h1 {
-  color: #333;
-}
-@media screen and (max-width: 480px) {
-  .content{
-    margin-left: 20px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .content{
-    margin-left: 20px;
-  }
-}
-/* Default (Desktop) styles */
+/* Sidebar should have fixed width and full height */
 .sidenav {
-  height: 100%;
-  width: 250px;
+  height: 100%; /* Full height for the sidebar */
+  width: 250px; /* Sidebar width */
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(46, 60, 104);
+  background-color: rgb(46, 60, 104); /* Sidebar background color */
   padding-top: 20px;
   z-index: 1;
-  overflow-x: hidden;
-  transition: width 0.3s ease; /* Smooth transition */
+  overflow-x:hidden;
+  transition: width 0.3s ease; /* Smooth transition for expanding/collapsing */
 }
 
 .sidenav.collapsed {
@@ -83,6 +78,27 @@ h1 {
   background-color: #575757;
 }
 
+/* Content area (main content) should fill the remaining space */
+.content {
+  margin-left: 250px; /* Sidebar width */
+  padding: 20px;
+  background-color: #ffffff; /* White background for content */
+  height: 100vh;  /* Full height */
+  width: calc(100vw - 250px); /* Content should fill the remaining width of the screen */
+  transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for resizing */
+  
+}
+
+/* When sidebar is collapsed, adjust content width */
+.sidenav.collapsed + .content {
+  margin-left: 50px; /* Reduced margin when sidebar is collapsed */
+  width: calc(100vw - 50px); /* Reduced content width when sidebar is collapsed */
+}
+
+h1 {
+  color: #333;
+}
+
 /* Mobile (Small screen) styles */
 @media screen and (max-width: 768px) {
   .sidenav {
@@ -114,6 +130,10 @@ h1 {
     width: 200px; /* Sidebar shown on mobile with this width */
     display: block;
   }
+  .content {
+    margin-left: 200px;  /* Adjust content margin based on new sidebar width */
+    width: calc(100% - 200px); /* Adjust content width */
+  }
 
   /* Ensure form adjusts to available screen width */
   .main-content {
@@ -121,10 +141,12 @@ h1 {
     transition: margin-left 0.3s ease;
     padding-left: 0;
   }
+
   /* If the sidebar is collapsed, the content should be displayed properly */
   .sidenav.collapsed + .main-content {
     margin-left: 0 !important; /* No margin when sidebar is collapsed */
   }
+  
 }
 
 /* Extra small screens (e.g., mobile devices in portrait mode) */
@@ -155,6 +177,8 @@ h1 {
     margin-left: 0; /* Remove sidebar margin on extra small screens */
     padding-left: 0;
   }
- 
-  
+  .content {
+    margin-left: 0;  /* No margin for content when sidebar is full width */
+    width: 100%;     /* Ensure full width for content */
+  }
 }
