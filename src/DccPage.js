@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Container, TextField, MenuItem, Button, Select, Typography, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
+import axios from 'axios';
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -88,9 +90,68 @@ function DccPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    // Prepare the data to be sent to the API
+    const requestData = {
+      name: formData.name,
+      personName: formData.personName,
+      designation: designation, // from the select dropdown
+      boothNo: formData.boothNo,
+      dob: formData.dob,
+      gender: formData.gender,
+      caste: caste, // from the select dropdown
+      mobileNo: formData.mobileNo,
+      email: formData.email,
+      dateOfApplication: new Date().toISOString(), // Example, you can adjust this to the correct value
+      aadharId: formData.aadharId,
+      voterId: formData.voterId,
+      photo: formData.photo ? formData.photo.name : '', // If you want to send the photo file name
+    };
+
+    // API request URL (this should be the correct URL for your API endpoint)
+    const apiUrl = 'http://api.unicaredev.in/api/schedule/CreatedSchedule';
+
+    try {
+      // Send POST request to the API
+      const response = await axios.post(apiUrl, requestData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log('Response from API:', response.data);
+
+      // Handle success (e.g., show a success message, clear form, etc.)
+      alert('Form submitted successfully!');
+      setFormData({ // Clear the form on success
+        nameCity: '',
+        nameCorporation: '',
+        nameZone:'',
+        nameParliament:'',
+        nameAssembly:'',
+        personName:'',
+        aadharId: '',
+        voterId: '',
+        voterSno:'',
+        boothNo: '',
+        mobileNo: '',
+        email: '',
+        dob: '',
+        designation: '',
+        gender: '',
+        caste: '',
+        photo: null,
+       
+       
+       
+        
+      });
+    } catch (error) {
+      console.error('Error during API request:', error);
+      alert('Failed to submit the form. Please try again!');
+    }
   };
 
   const photoPreview = formData.photo ? URL.createObjectURL(formData.photo) : '';
@@ -111,7 +172,7 @@ function DccPage() {
                     label="Name of the City"
                     variant="outlined"
                     fullWidth
-                    name="name"
+                    name="nameCity"
                     value={formData.nameCity}
                     onChange={handleChange}
                     required
@@ -123,7 +184,7 @@ function DccPage() {
                     label="Corporation"
                     variant="outlined"
                     fullWidth
-                    name="name"
+                    name="nameCorporation"
                     value={formData.Corporation}
                     onChange={handleChange}
                     required
@@ -135,7 +196,7 @@ function DccPage() {
                     label="Name of the Zone"
                     variant="outlined"
                     fullWidth
-                    name="name"
+                    name="nameZone"
                     value={formData.nameZone}
                     onChange={handleChange}
                     required
@@ -147,7 +208,7 @@ function DccPage() {
                     label="Name of the Parliament"
                     variant="outlined"
                     fullWidth
-                    name="name"
+                    name="nameParliament"
                     value={formData.nameParliament}
                     onChange={handleChange}
                     required
@@ -186,10 +247,12 @@ function DccPage() {
                     label="Aadhar ID"
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="aadharId"
+                    type="number"
                     value={formData.aadharId}
                     onChange={handleChange}
                     required
+                    inputProps={{ pattern: '[0-9]*' }}  
                   />
                 </div>
                 {/* Voter ID  */}
@@ -198,10 +261,11 @@ function DccPage() {
                     label="Voter ID"
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="voterId"
                     value={formData.voterId}
                     onChange={handleChange}
                     required
+                    type="number"
                   />
                 </div>
                 {/* Voter's Serial Number  */}
@@ -210,10 +274,11 @@ function DccPage() {
                     label="Voter's Serial Number"
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="voterSno"
                     value={formData.voterSno}
                     onChange={handleChange}
                     required
+                    type="number"
                   />
                 </div>
                 {/* Ward Number  */}
@@ -222,10 +287,11 @@ function DccPage() {
                     label="Ward No."
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="wardNo"
                     value={formData.wardNo}
                     onChange={handleChange}
                     required
+                    type="number"
                   />
                 </div>
                 {/* Booth Number  */}
@@ -234,10 +300,11 @@ function DccPage() {
                     label="Booth No."
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="boothNo"
                     value={formData.boothNo}
                     onChange={handleChange}
                     required
+                    type="number"
                   />
                 </div>
                 {/* Mobile Number  */}
@@ -246,10 +313,11 @@ function DccPage() {
                     label="Mobile Number"
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="mobileNo"
                     value={formData.mobileNo}
                     onChange={handleChange}
                     required
+                    type="number"
                   />
                 </div>
                 {/* Email ID  */}
@@ -258,7 +326,7 @@ function DccPage() {
                     label="Email ID"
                     variant="outlined"
                     fullWidth
-                    name="personName"
+                    name="email"
                     value={formData.email}
                     onChange={handleChange}
 

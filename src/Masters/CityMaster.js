@@ -8,8 +8,8 @@ function CityMaster() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editCityName, setEditCityName] = useState("");
 
-  //const apiUrl = 'https://api.unicaredev.in/api/schedule/CreatedSchedule'; // The API URL you provided
-  const apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.unicaredev.in/api/schedule/CreatedSchedule';
+  const apiUrl = 'https://api.unicaredev.in/api/schedule/CreatedSchedule'; // The API URL you provided
+  //const apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.unicaredev.in/api/schedule/CreatedSchedule';
 
 
   // Handle form submission to add city
