@@ -73,6 +73,8 @@ function DccPage() {
     voterId: '',
     photo: null,
   });
+ 
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -153,7 +155,7 @@ function DccPage() {
       alert('Failed to submit the form. Please try again!');
     }
   };
-
+ 
   const photoPreview = formData.photo ? URL.createObjectURL(formData.photo) : '';
 
   return (
