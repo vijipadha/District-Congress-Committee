@@ -59,7 +59,7 @@ function CityMaster() {
 
   return (
     <div className="container-fluid bg-light min-vh-100">
-      <h1 className="text-center mt-4">City Master</h1>
+      <h4 className="text-center mt-4">City Master</h4>
       <p className="text-center">Add a new city here</p>
 
       {/* Form for adding new city */}

@@ -25,9 +25,15 @@ function SideNav() {
       <h2 className={`sidenav-title ${collapsed ? 'collapsed' : ''}`}>COMMITTEES</h2>
       <ul>
       <li>
-          <button className="submenu-toggle" onClick={toggleMastersMenu}>
+          {/* <button className="submenu-toggle" onClick={toggleMastersMenu}>
             MASTERS {mastersOpen ? '▲' : '▼'}
-          </button>
+          </button> */}
+          <Link
+            to="#"
+            onClick={toggleMastersMenu}
+            className="submenu-toggle">
+            MASTERS {mastersOpen ? '▲' : '▼'}
+          </Link>
           {mastersOpen && (
             <ul className="submenu">
               <li><Link to="/masters/citymaster">City Master</Link></li>
