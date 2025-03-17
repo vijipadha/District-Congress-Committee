@@ -1,56 +1,56 @@
 import React, { useState } from 'react';
 import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
-function CorporationMaster() {
-  const [corporationName, setCorporationName] = useState("");
-  const [corporations, setCorporations] = useState([]);
+function ZoneMaster() {
+  const [zoneName, setZoneName] = useState("");
+  const [zones, setZones] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [editCorporationName, setEditCorporationName] = useState("");
+  const [editZoneName, setEditZoneName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (corporationName) {
-      // Add new Corporation to the list
-      setCorporations([...corporations, { name: corporationName }]);
-      setCorporationName(""); // Reset input after submit
+    if (zoneName) {
+      // Add new Zone to the list
+      setZones([...zones, { name: zoneName }]);
+      setZoneName(""); // Reset input after submit
     }
   };
 
   const handleDelete = (index) => {
-    // Remove Corporation from the list
-    setCorporations(corporations.filter((_, i) => i !== index));
+    // Remove Zone from the list
+    setZones(zones.filter((_, i) => i !== index));
   };
 
   const handleEdit = (index) => {
     // Set editing state
     setEditingIndex(index);
-    setEditCorporationName(corporations[index].name);
+    setEditZoneName(zones[index].name);
   };
 
   const handleUpdate = (index) => {
-    // Update Corporation name
-    const updatedCorporations = [...corporations];
-    updatedCorporations[index].name = editCorporationName;
-    setCorporations(updatedCorporations);
+    // Update Zone name
+    const updatedZones = [...zones];
+    updatedZones[index].name = editZoneName;
+    setZones(updatedZones);
     setEditingIndex(null);
-    setEditCorporationName(""); // Clear edit input
+    setEditZoneName(""); // Clear edit input
   };
 
   return (
     <div className="container-fluid bg-light min-vh-100">
-      <h4 className="text-center">Corporation</h4>
-      <p className="text-center">Add a new Corporation here</p>
+      <h4 className="text-center">Zone</h4>
+      <p className="text-center">Add a new Zone here</p>
 
-      {/* Form for adding new Corporation */}
+      {/* Form for adding new Zone */}
       <div>
         <form onSubmit={handleSubmit}>
           <div className="input-group" style={{ display: 'flex', justifyContent: 'space-between' }}>
             <TextField 
-              label="Corporation Name" 
+              label="Zone Name" 
               variant="outlined" 
               size="small"
-              value={corporationName}
-              onChange={(e) => setCorporationName(e.target.value)} 
+              value={zoneName}
+              onChange={(e) => setZoneName(e.target.value)} 
               required
               style={{ flexGrow: 1 }}
             />
@@ -60,36 +60,36 @@ function CorporationMaster() {
               type="submit" 
               style={{ marginLeft: '10px', alignSelf: 'center' }}
             >
-              Add City
+              Add Zone
             </Button>
           </div>
         </form>
       </div>
 
-      {/* Table to display Corporations */}
+      {/* Table to display Zones */}
       <TableContainer component={Paper} style={{ marginTop: '20px' }}>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell><strong>Sl. No.</strong></TableCell>
-              <TableCell><strong>Corporation Name</strong></TableCell>
+              <TableCell><strong>Zone Name</strong></TableCell>
               <TableCell><strong>Actions</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {corporations.map((corporation, index) => (
+            {zones.map((zone, index) => (
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>
                   {editingIndex === index ? (
                     <TextField 
-                      value={editCorporationName}
-                      onChange={(e) => setEditCorporationName(e.target.value)}
+                      value={editZoneName}
+                      onChange={(e) => setEditZoneName(e.target.value)}
                       size="small"
                       fullWidth
                     />
                   ) : (
-                    corporation.name
+                    zone.name
                   )}
                 </TableCell>
                 <TableCell>
@@ -130,4 +130,4 @@ function CorporationMaster() {
   );
 }
 
-export default CorporationMaster;
+export default ZoneMaster;

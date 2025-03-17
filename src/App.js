@@ -17,6 +17,10 @@ import FrontalDepartment from './FrontalDepartment';
 import Mandal from './Mandal';
 import CityMaster from './Masters/CityMaster';
 import CorporationMaster from './Masters/CorporationMaster';
+import ZoneMaster from './Masters/ZoneMaster';
+import ParliamentMaster from './Masters/ParliamentMaster';
+import AssemblyMaster from './Masters/AssemblyMaster';
+import DesignationMaster from './Masters/DesignationMaster';
 
 import './App.css';  // Your app's styles
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -55,6 +59,10 @@ function App() {
               <Route path="/mandal" element={<Mandal />} />
               <Route path="/masters/citymaster" element={<CityMaster />} />
               <Route path="/masters/corporationmaster" element={<CorporationMaster />} />
+              <Route path="/masters/zonemaster" element={<ZoneMaster />} />
+              <Route path="/masters/parliamentmaster" element={<ParliamentMaster />} />
+              <Route path="/masters/assemblymaster" element={<AssemblyMaster />} />
+              <Route path="/masters/designationmaster" element={<DesignationMaster />} />
 
 
             </Routes>

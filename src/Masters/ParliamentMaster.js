@@ -1,56 +1,56 @@
 import React, { useState } from 'react';
 import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
-function CorporationMaster() {
-  const [corporationName, setCorporationName] = useState("");
-  const [corporations, setCorporations] = useState([]);
+function ParliamentMaster() {
+  const [parliamentName, setParliamentName] = useState("");
+  const [parliaments, setParliaments] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [editCorporationName, setEditCorporationName] = useState("");
+  const [editParliamentName, setEditParliamentName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (corporationName) {
-      // Add new Corporation to the list
-      setCorporations([...corporations, { name: corporationName }]);
-      setCorporationName(""); // Reset input after submit
+    if (parliamentName) {
+      // Add new Parliament to the list
+      setParliaments([...parliaments, { name: parliamentName }]);
+      setParliamentName(""); // Reset input after submit
     }
   };
 
   const handleDelete = (index) => {
-    // Remove Corporation from the list
-    setCorporations(corporations.filter((_, i) => i !== index));
+    // Remove Parliament from the list
+    setParliaments(parliaments.filter((_, i) => i !== index));
   };
 
   const handleEdit = (index) => {
     // Set editing state
     setEditingIndex(index);
-    setEditCorporationName(corporations[index].name);
+    setEditParliamentName(parliaments[index].name);
   };
 
   const handleUpdate = (index) => {
-    // Update Corporation name
-    const updatedCorporations = [...corporations];
-    updatedCorporations[index].name = editCorporationName;
-    setCorporations(updatedCorporations);
+    // Update Parliament name
+    const updatedParliaments = [...parliaments];
+    updatedParliaments[index].name = editParliamentName;
+    setParliaments(updatedParliaments);
     setEditingIndex(null);
-    setEditCorporationName(""); // Clear edit input
+    setEditParliamentName(""); // Clear edit input
   };
 
   return (
     <div className="container-fluid bg-light min-vh-100">
-      <h4 className="text-center">Corporation</h4>
-      <p className="text-center">Add a new Corporation here</p>
+      <h4 className="text-center">Parliament</h4>
+      <p className="text-center">Add a new Parliament here</p>
 
-      {/* Form for adding new Corporation */}
+      {/* Form for adding new Parliament */}
       <div>
         <form onSubmit={handleSubmit}>
           <div className="input-group" style={{ display: 'flex', justifyContent: 'space-between' }}>
             <TextField 
-              label="Corporation Name" 
+              label="Parliament Name" 
               variant="outlined" 
               size="small"
-              value={corporationName}
-              onChange={(e) => setCorporationName(e.target.value)} 
+              value={parliamentName}
+              onChange={(e) => setParliamentName(e.target.value)} 
               required
               style={{ flexGrow: 1 }}
             />
@@ -60,36 +60,36 @@ function CorporationMaster() {
               type="submit" 
               style={{ marginLeft: '10px', alignSelf: 'center' }}
             >
-              Add City
+              Add Parliament
             </Button>
           </div>
         </form>
       </div>
 
-      {/* Table to display Corporations */}
+      {/* Table to display Parliaments */}
       <TableContainer component={Paper} style={{ marginTop: '20px' }}>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell><strong>Sl. No.</strong></TableCell>
-              <TableCell><strong>Corporation Name</strong></TableCell>
+              <TableCell><strong>Parliament Name</strong></TableCell>
               <TableCell><strong>Actions</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {corporations.map((corporation, index) => (
+            {parliaments.map((parliament, index) => (
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>
                   {editingIndex === index ? (
                     <TextField 
-                      value={editCorporationName}
-                      onChange={(e) => setEditCorporationName(e.target.value)}
+                      value={editParliamentName}
+                      onChange={(e) => setEditParliamentName(e.target.value)}
                       size="small"
                       fullWidth
                     />
                   ) : (
-                    corporation.name
+                    parliament.name
                   )}
                 </TableCell>
                 <TableCell>
@@ -130,4 +130,4 @@ function CorporationMaster() {
   );
 }
 
-export default CorporationMaster;
+export default ParliamentMaster;

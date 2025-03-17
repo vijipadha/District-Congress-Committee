@@ -1,56 +1,56 @@
 import React, { useState } from 'react';
 import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
-function CorporationMaster() {
-  const [corporationName, setCorporationName] = useState("");
-  const [corporations, setCorporations] = useState([]);
+function DesignationMaster() {
+  const [designationName, setDesignationName] = useState("");
+  const [designations, setDesignations] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [editCorporationName, setEditCorporationName] = useState("");
+  const [editDesignationName, setEditDesignationName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (corporationName) {
-      // Add new Corporation to the list
-      setCorporations([...corporations, { name: corporationName }]);
-      setCorporationName(""); // Reset input after submit
+    if (designationName) {
+      // Add new Designation to the list
+      setDesignations([...designations, { name: designationName }]);
+      setDesignationName(""); // Reset input after submit
     }
   };
 
   const handleDelete = (index) => {
-    // Remove Corporation from the list
-    setCorporations(corporations.filter((_, i) => i !== index));
+    // Remove Designation from the list
+    setDesignations(designations.filter((_, i) => i !== index));
   };
 
   const handleEdit = (index) => {
     // Set editing state
     setEditingIndex(index);
-    setEditCorporationName(corporations[index].name);
+    setEditDesignationName(designations[index].name);
   };
 
   const handleUpdate = (index) => {
-    // Update Corporation name
-    const updatedCorporations = [...corporations];
-    updatedCorporations[index].name = editCorporationName;
-    setCorporations(updatedCorporations);
+    // Update Designation name
+    const updatedDesignations = [...designations];
+    updatedDesignations[index].name = editDesignationName;
+    setDesignations(updatedDesignations);
     setEditingIndex(null);
-    setEditCorporationName(""); // Clear edit input
+    setEditDesignationName(""); // Clear edit input
   };
 
   return (
     <div className="container-fluid bg-light min-vh-100">
-      <h4 className="text-center">Corporation</h4>
-      <p className="text-center">Add a new Corporation here</p>
+      <h4 className="text-center">Designation</h4>
+      <p className="text-center">Add a new Designation here</p>
 
-      {/* Form for adding new Corporation */}
+      {/* Form for adding new Designation */}
       <div>
         <form onSubmit={handleSubmit}>
           <div className="input-group" style={{ display: 'flex', justifyContent: 'space-between' }}>
             <TextField 
-              label="Corporation Name" 
+              label="Designation Name" 
               variant="outlined" 
               size="small"
-              value={corporationName}
-              onChange={(e) => setCorporationName(e.target.value)} 
+              value={designationName}
+              onChange={(e) => setDesignationName(e.target.value)} 
               required
               style={{ flexGrow: 1 }}
             />
@@ -60,36 +60,36 @@ function CorporationMaster() {
               type="submit" 
               style={{ marginLeft: '10px', alignSelf: 'center' }}
             >
-              Add City
+              Add Designation
             </Button>
           </div>
         </form>
       </div>
 
-      {/* Table to display Corporations */}
+      {/* Table to display Designations */}
       <TableContainer component={Paper} style={{ marginTop: '20px' }}>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell><strong>Sl. No.</strong></TableCell>
-              <TableCell><strong>Corporation Name</strong></TableCell>
+              <TableCell><strong>Designation Name</strong></TableCell>
               <TableCell><strong>Actions</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {corporations.map((corporation, index) => (
+            {designations.map((designation, index) => (
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>
                   {editingIndex === index ? (
                     <TextField 
-                      value={editCorporationName}
-                      onChange={(e) => setEditCorporationName(e.target.value)}
+                      value={editDesignationName}
+                      onChange={(e) => setEditDesignationName(e.target.value)}
                       size="small"
                       fullWidth
                     />
                   ) : (
-                    corporation.name
+                    designation.name
                   )}
                 </TableCell>
                 <TableCell>
@@ -130,4 +130,4 @@ function CorporationMaster() {
   );
 }
 
-export default CorporationMaster;
+export default DesignationMaster;
